@@ -1,3 +1,102 @@
+📂 File & Directory Management
+These are the fundamentals. You'll use them every single day.
+
+ls: List directory contents. Use flags like -l (long format), -a (all files, including hidden), and -h (human-readable sizes).
+
+cd: Change directories.
+
+pwd: Print the current working directory.
+
+cp: Copy files and directories. The -r flag is for recursive copying (copying a whole directory).
+
+mv: Move or rename files and directories.
+
+rm: Remove files and directories. Be careful with this one! The -r flag deletes a directory and its contents, and -f forces deletion without prompting.
+
+mkdir: Create a new directory.
+
+touch: Create an empty file or update the timestamp of an existing file.
+
+find: Search for files and directories based on various criteria (name, size, type, etc.).
+
+grep: Search for patterns in text. This is a must-have for searching through log files.
+
+sed: A stream editor for filtering and transforming text. Great for find-and-replace in files.
+
+awk: A powerful pattern-scanning and text-processing language.
+
+🔐 Permissions & Ownership
+Understanding how to secure files and directories is critical in a multi-user environment.
+
+chmod: Change the permissions of a file or directory (read, write, execute).
+
+chown: Change the owner and group of a file or directory.
+
+⚙️ Process Management
+You need to know what's running on your systems and how to manage it.
+
+ps: Display information about active processes. Use aux flags (ps aux) to see all processes.
+
+top / htop: Display real-time information about system processes. htop is a more user-friendly version of top.
+
+kill: Terminate a process by its ID.
+
+pgrep: Find the process ID of a running program.
+
+🌐 Networking
+DevOps is all about connecting services. These commands are your window into the network.
+
+ip addr or ifconfig: Display and manage network interfaces. ip is the modern replacement for ifconfig.
+
+ping: Test network connectivity to another host.
+
+netstat or ss: Display network connections, routing tables, and interface statistics. ss is the modern replacement for netstat.
+
+curl or wget: Transfer data from or to a server. Essential for testing APIs and downloading files.
+
+ssh: Securely connect to a remote machine.
+
+🖥️ System Information & Monitoring
+Know your system's health and configuration at a glance.
+
+uname -a: Print all system information (kernel version, OS, etc.).
+
+df -h: Display disk space usage in a human-readable format.
+
+du -h: Display directory space usage in a human-readable format.
+
+free -h: Display the amount of free and used memory in the system.
+
+uptime: Show how long the system has been running.
+
+journalctl: Query and display logs from the systemd journal. Use --since "1 hour ago" to filter by time.
+
+📦 Package Management (Ubuntu/Debian)
+Installing, updating, and removing software is a core task.
+
+sudo apt update: Refresh the package list from the repositories.
+
+sudo apt upgrade: Upgrade all installed packages to their latest versions.
+
+sudo apt install <package_name>: Install a new package.
+
+sudo apt remove <package_name>: Remove a package.
+
+🗄️ Archiving & Compression
+You'll often need to bundle files for backups or transfers.
+
+tar: Create or extract .tar archives. Common flags are -c (create), -x (extract), -v (verbose), -f (file), and -z (for gzip compression, creating .tar.gz or .tgz files).
+
+gzip / gunzip: Compress or decompress files.
+
+zip / unzip: For working with .zip archives.
+
+
+
+
+
+
+
 # Basic System Commands
 sudo apt update                # Update package lists
 sudo apt upgrade               # Upgrade installed packages
