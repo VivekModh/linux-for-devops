@@ -1,0 +1,81 @@
+# Basic System Commands
+sudo apt update                # Update package lists
+sudo apt upgrade               # Upgrade installed packages
+sudo apt install <package>     # Install a package
+sudo apt remove <package>      # Remove a package
+sudo systemctl status          # Show system status
+sudo systemctl start <service> # Start a service
+sudo systemctl stop <service>  # Stop a service
+sudo systemctl restart <service> # Restart a service
+sudo systemctl enable <service>  # Enable service at boot
+sudo systemctl disable <service> # Disable service at boot
+
+# User and Permission Management
+sudo adduser <username>        # Add a new user
+sudo usermod -aG <group> <user> # Add user to group
+sudo passwd <username>         # Change user password
+sudo chown <user>:<group> <file> # Change file owner
+sudo chmod 755 <file>          # Change file permissions
+
+# Networking
+ip a                           # Show network interfaces
+ping <host>                    # Ping a host
+netstat -tuln                  # List open ports
+ss -tuln                       # List open ports (modern)
+curl <url>                     # Make HTTP requests
+wget <url>                     # Download files
+
+# Process Management
+ps aux                         # List all processes
+top                            # Show running processes
+htop                           # Interactive process viewer
+kill <pid>                     # Kill a process
+pkill <name>                   # Kill process by name
+
+# Disk and File Management
+df -h                          # Show disk usage
+du -sh <dir>                   # Show directory size
+ls -l                          # List files
+find <dir> -name <pattern>     # Find files
+tar -czvf <archive.tar.gz> <dir> # Create compressed archive
+unzip <file.zip>               # Unzip files
+
+# Docker
+sudo apt install docker.io     # Install Docker
+sudo systemctl start docker    # Start Docker
+sudo docker pull <image>       # Pull Docker image
+sudo docker run <image>        # Run Docker container
+sudo docker ps                 # List running containers
+sudo docker stop <container>   # Stop container
+
+# Kubernetes (with kubectl)
+sudo snap install kubectl --classic # Install kubectl
+kubectl get pods                  # List pods
+kubectl get services              # List services
+kubectl apply -f <file.yaml>      # Apply config
+kubectl logs <pod>                # View pod logs
+
+# Git
+sudo apt install git              # Install Git
+git clone <repo>                  # Clone repository
+git status                        # Check repo status
+git add <file>                    # Stage changes
+git commit -m "message"           # Commit changes
+git push                          # Push changes
+
+# CI/CD Tools (Jenkins example)
+sudo apt install openjdk-11-jdk   # Install Java (for Jenkins)
+wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+sudo apt update
+sudo apt install jenkins
+sudo systemctl start jenkins
+
+# Monitoring
+sudo apt install prometheus       # Install Prometheus
+sudo apt install grafana          # Install Grafana
+
+# Miscellaneous
+sudo reboot                       # Reboot system
+sudo shutdown now                 # Shutdown system
+history                           # Show command history
