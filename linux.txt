@@ -1,180 +1,200 @@
+📜 Table of Contents
+
 📂 File & Directory Management
-These are the fundamentals. You'll use them every single day.
-
-ls: List directory contents. Use flags like -l (long format), -a (all files, including hidden), and -h (human-readable sizes).
-
-cd: Change directories.
-
-pwd: Print the current working directory.
-
-cp: Copy files and directories. The -r flag is for recursive copying (copying a whole directory).
-
-mv: Move or rename files and directories.
-
-rm: Remove files and directories. Be careful with this one! The -r flag deletes a directory and its contents, and -f forces deletion without prompting.
-
-mkdir: Create a new directory.
-
-touch: Create an empty file or update the timestamp of an existing file.
-
-find: Search for files and directories based on various criteria (name, size, type, etc.).
-
-grep: Search for patterns in text. This is a must-have for searching through log files.
-
-sed: A stream editor for filtering and transforming text. Great for find-and-replace in files.
-
-awk: A powerful pattern-scanning and text-processing language.
 
 🔐 Permissions & Ownership
-Understanding how to secure files and directories is critical in a multi-user environment.
-
-chmod: Change the permissions of a file or directory (read, write, execute).
-
-chown: Change the owner and group of a file or directory.
 
 ⚙️ Process Management
-You need to know what's running on your systems and how to manage it.
-
-ps: Display information about active processes. Use aux flags (ps aux) to see all processes.
-
-top / htop: Display real-time information about system processes. htop is a more user-friendly version of top.
-
-kill: Terminate a process by its ID.
-
-pgrep: Find the process ID of a running program.
 
 🌐 Networking
-DevOps is all about connecting services. These commands are your window into the network.
-
-ip addr or ifconfig: Display and manage network interfaces. ip is the modern replacement for ifconfig.
-
-ping: Test network connectivity to another host.
-
-netstat or ss: Display network connections, routing tables, and interface statistics. ss is the modern replacement for netstat.
-
-curl or wget: Transfer data from or to a server. Essential for testing APIs and downloading files.
-
-ssh: Securely connect to a remote machine.
 
 🖥️ System Information & Monitoring
-Know your system's health and configuration at a glance.
 
-uname -a: Print all system information (kernel version, OS, etc.).
-
-df -h: Display disk space usage in a human-readable format.
-
-du -h: Display directory space usage in a human-readable format.
-
-free -h: Display the amount of free and used memory in the system.
-
-uptime: Show how long the system has been running.
-
-journalctl: Query and display logs from the systemd journal. Use --since "1 hour ago" to filter by time.
-
-📦 Package Management (Ubuntu/Debian)
-Installing, updating, and removing software is a core task.
-
-sudo apt update: Refresh the package list from the repositories.
-
-sudo apt upgrade: Upgrade all installed packages to their latest versions.
-
-sudo apt install <package_name>: Install a new package.
-
-sudo apt remove <package_name>: Remove a package.
+📦 Package Management (Debian/Ubuntu)
 
 🗄️ Archiving & Compression
-You'll often need to bundle files for backups or transfers.
 
-tar: Create or extract .tar archives. Common flags are -c (create), -x (extract), -v (verbose), -f (file), and -z (for gzip compression, creating .tar.gz or .tgz files).
+☁️ Version Control (Git)
 
-gzip / gunzip: Compress or decompress files.
+🐳 Containerization (Docker)
 
-zip / unzip: For working with .zip archives.
+☸️ Orchestration (Kubernetes)
+
+🏗️ Infrastructure as Code (Terraform)
+
+🚀 CI/CD (Jenkins Example)
+
+📊 Observability (Prometheus & Grafana)
+
+🛠️ Miscellaneous
+
+📂 File & Directory Management
+The building blocks of interacting with a Linux system.
+
+Command	                                                      Description & Common Usage
+ls -lah	                                        List directory contents. -l for long format, -a for all (hidden) files, -h for human-readable sizes.
+cd <directory>	                                Change directory. Use cd .. to go up one level, cd ~ or just cd to go to the home directory.
+pwd	                                            Print working directory. Shows your current location in the filesystem.
+cp -r <source> <destination>	                  Copy files or directories. -r is required for recursively copying a directory and its contents.
+mv <source> <destination>	                      Move or rename a file/directory. If the destination is a new name in the same directory, it renames.
+rm <file>                                     	Remove a file. Use with extreme caution. 
+rm -rf <directory>                              forcefully removes a directory and everything inside without prompting. This is irreversible.
+mkdir <directory_name>	                        Make a new directory. Use -p to create parent directories if they don't exist (e.g., mkdir -p a/b/c).
+touch <file_name>	                              Creates a new, empty file or updates the last modified timestamp of an existing file.
+find <dir> -name "<pattern>"	                  Searches for files and directories. Example: find /var/log -name "*.log" finds all log files in /var/log.
+grep "pattern" <file>	                          Searches for a specific text pattern within a file. Essential for parsing logs. Example: grep "ERROR" application.log.
+sed 's/old/new/g' <file>	                      Stream editor for find-and-replace, text transformations, etc. s for substitute, g for global (all occurrences on a line).
+awk '{print $1}' <file>	                        A powerful pattern-scanning and text-processing language. Often used to extract specific columns of text.
 
 
+🔐 Permissions & Ownership
+Securing your files and controlling access.
+
+Command	Description & Common Usage
+chmod 755 <file>	Change mode (permissions). Sets read/write/execute permissions for owner, group, and others. 755 is common for scripts/directories (rwxr-xr-x). 644 is common for files (rw-r--r--).
+chown <user>:<group> <file>	Change file owner and group. Example: sudo chown www-data:www-data /var/www/html.
+sudo adduser <username>	A user-friendly, interactive way to add a new user.
+sudo usermod -aG <group> <user>	Adds an existing user to a secondary group (e.g., sudo usermod -aG sudo dev_user). -aG is crucial (append, group).
+
+Export to Sheets
+⚙️ Process Management
+Viewing and controlling what's running on your system.
+
+Command	                                                             Description & Common Usage
+ps aux	                                       Lists all running processes. a=all users, u=show user, x=show processes not attached to a terminal.
+top / htop	                                   Display real-time system processes. htop is a powerful, user-friendly improvement over top and is highly recommended.
+kill <PID>                                     Terminates a process using its Process ID. This sends a TERM signal (graceful shutdown).
+kill -9 <PID>	                                 Forcefully kills a process. Unsaved data will be lost. Use as a last resort.
+pgrep <process_name>	                         Finds the Process ID by its grep-able name (e.g., pgrep nginx).
+pkill <process_name>	                         Kills a process by its name, without needing the PID.
 
 
+🌐 Networking
+Inspecting and managing network connections.
+
+Command	                                                              Description & Common Usage
+ip a or ip addr	                             The modern standard for showing network ip addresses and interface information. Replaces ifconfig.
+ping <host>	                                 Sends ICMP echo requests to a host to test network connectivity and latency.
+ss -tulnp	                                   The modern standard for displaying network sockets. Replaces netstat. -t=TCP, -u=UDP, -l=listening, -n=numeric, -p=show process.
+curl <url>	                                 Transfer data. Excellent for testing APIs from the command line. Example: curl -X GET http://localhost/api/v1/health.
+wget <url>	                                 Downloads files from the internet. Example: wget https://releases.ubuntu.com/22.04.3/ubuntu-22.04.3-desktop-amd64.iso.
+ssh <user>@<host>                            Secure Shell. Securely connect to the terminal of a remote machine.
 
 
+🖥️ System Information & Monitoring
+Understanding system health and configuration.
 
-# Basic System Commands
-sudo apt update                # Update package lists
-sudo apt upgrade               # Upgrade installed packages
-sudo apt install <package>     # Install a package
-sudo apt remove <package>      # Remove a package
-sudo systemctl status          # Show system status
-sudo systemctl start <service> # Start a service
-sudo systemctl stop <service>  # Stop a service
-sudo systemctl restart <service> # Restart a service
-sudo systemctl enable <service>  # Enable service at boot
-sudo systemctl disable <service> # Disable service at boot
+Command	                                                               Description & Common Usage
+uname -a	                                    Prints all system information (kernel name, version, OS, etc.).
+df -h                                         Displays disk free space in a human-readable format.
+du -sh <directory>	                          Displays disk usage for a directory. -s for summary, -h for human-readable.
+free -h	                                      Shows the amount of free and used memory in a human-readable format.
+uptime	                                      Shows how long the system has been running, current time, number of users, and load average.
+journalctl -u <service>	                      Queries logs from the systemd journal. Use -f to follow logs in real-time. Ex: journalctl -u nginx.service -f.
+history	                                      Displays your previously executed commands.
 
-# User and Permission Management
-sudo adduser <username>        # Add a new user
-sudo usermod -aG <group> <user> # Add user to group
-sudo passwd <username>         # Change user password
-sudo chown <user>:<group> <file> # Change file owner
-sudo chmod 755 <file>          # Change file permissions
 
-# Networking
-ip a                           # Show network interfaces
-ping <host>                    # Ping a host
-netstat -tuln                  # List open ports
-ss -tuln                       # List open ports (modern)
-curl <url>                     # Make HTTP requests
-wget <url>                     # Download files
+📦 Package Management (Debian/Ubuntu)
+Installing, updating, and removing software.
 
-# Process Management
-ps aux                         # List all processes
-top                            # Show running processes
-htop                           # Interactive process viewer
-kill <pid>                     # Kill a process
-pkill <name>                   # Kill process by name
+Command	                                                                 Description & Common Usage
+sudo apt update	                              Refreshes the local package index with the latest changes from the repositories.
+sudo apt upgrade	                            Upgrades all installed packages to their newest available versions.
+sudo apt install <package>	                  Installs a new package.
+sudo apt remove <package>	                    Removes a package.
+sudo apt autoremove	                          Removes packages that were automatically installed to satisfy dependencies but are no longer needed.
+sudo apt search <term>	                      Searches for a package in the repositories.
 
-# Disk and File Management
-df -h                          # Show disk usage
-du -sh <dir>                   # Show directory size
-ls -l                          # List files
-find <dir> -name <pattern>     # Find files
-tar -czvf <archive.tar.gz> <dir> # Create compressed archive
-unzip <file.zip>               # Unzip files
 
-# Docker
-sudo apt install docker.io     # Install Docker
-sudo systemctl start docker    # Start Docker
-sudo docker pull <image>       # Pull Docker image
-sudo docker run <image>        # Run Docker container
-sudo docker ps                 # List running containers
-sudo docker stop <container>   # Stop container
+🗄️ Archiving & Compression
+Bundling and compressing files.
 
-# Kubernetes (with kubectl)
-sudo snap install kubectl --classic # Install kubectl
-kubectl get pods                  # List pods
-kubectl get services              # List services
-kubectl apply -f <file.yaml>      # Apply config
-kubectl logs <pod>                # View pod logs
+Command	                                                                 Description & Common Usage
+tar -czvf <archive.tar.gz> <dir>	            Creates a gzipped tar archive. -c=create, -z=gzip, -v=verbose, -f=file.
+tar -xzvf <archive.tar.gz>	                  Extracts a gzipped tar archive.
+zip -r <archive.zip> <dir>	                  Creates a .zip archive.
+unzip <archive.zip>	                          Extracts a .zip archive.
 
-# Git
-sudo apt install git              # Install Git
-git clone <repo>                  # Clone repository
-git status                        # Check repo status
-git add <file>                    # Stage changes
-git commit -m "message"           # Commit changes
-git push                          # Push changes
 
-# CI/CD Tools (Jenkins example)
-sudo apt install openjdk-11-jdk   # Install Java (for Jenkins)
-wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
-sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
-sudo apt update
-sudo apt install jenkins
-sudo systemctl start jenkins
+☁️ Version Control (Git)
+The cornerstone of modern software development and IaC workflows.
 
-# Monitoring
-sudo apt install prometheus       # Install Prometheus
-sudo apt install grafana          # Install Grafana
+Command	                                                                 Description & Common Usage
+git clone <repo_url>	                         Copies an entire remote repository to your local machine.
+git status	                                   Shows the current state of your working directory and staging area.
+git add <file>	                               Adds changes from your working directory to the staging area. Use git add . to stage all changes.
+git commit -m "Message"	                       Saves your staged changes to your local repository history with a descriptive message.
+git pull	                                     Fetches changes from the remote repository and merges them into your current branch.
+git push	                                     Uploads your local commits to the remote repository.
+git branch	                                   Lists all local branches. git branch <new_branch> creates a new branch.
+git checkout <branch>	                         Switches to a different branch. git checkout -b <new_branch> creates and switches to a new branch.
 
-# Miscellaneous
-sudo reboot                       # Reboot system
-sudo shutdown now                 # Shutdown system
-history                           # Show command history
+
+🐳 Containerization (Docker)
+Building, shipping, and running applications in isolated containers.
+Pro-Tip: Add your user to the docker group to avoid using sudo for every command: sudo usermod -aG docker $USER (requires a new login session).
+
+Command	                                                                  Description & Common Usage
+docker build -t <tag_name> .	                  Builds a Docker image from a Dockerfile in the current directory.
+docker run -d -p 8080:80 <image>	              Runs a container from an image. -d=detached, -p=port mapping (host:container).
+docker ps	                                      Lists all running containers. 
+docker ps -a                                    Lists all containers (running and stopped).
+docker images	                                  Lists all Docker images on your system.
+docker stop <container_id>	                    Gracefully stops a running container.
+docker logs -f <container_id>                 	Fetches the logs of a container. -f follows the log output.
+docker exec -it <container_id> /bin/bash	      Opens an interactive terminal inside a running container.
+docker pull <image_name>	                      Downloads an image from a registry (like Docker Hub) without running it.
+
+
+☸️ Orchestration (Kubernetes)
+Managing containerized applications at scale using kubectl.
+
+Command	                                                       Description & Common Usage
+kubectl get pods	                                Lists all pods in the current namespace. Use -n <namespace> for a different one.
+kubectl get svc	                                  Lists all services.
+kubectl apply -f <config.yaml>	                  Applies a configuration from a file to a resource (create or update).
+kubectl delete -f <config.yaml>	                  Deletes resources defined in a YAML file.
+kubectl describe pod <pod_name>	                  Shows detailed information about a pod. Essential for debugging.
+kubectl logs -f <pod_name>                      	Streams the logs from a pod.
+kubectl exec -it <pod_name> -- /bin/sh	          Executes a command in a pod. Useful for interactive debugging.
+
+
+🏗️ Infrastructure as Code (Terraform)
+Defining and provisioning infrastructure using code.
+
+Command	                                                      Description & Common Usage
+terraform init	                                      Initializes a working directory containing Terraform configuration files.
+terraform plan	                                      Creates an execution plan, showing you what Terraform will do.
+terraform apply	                                      Applies the changes required to reach the desired state of the configuration.
+terraform destroy	                                    Destroys the Terraform-managed infrastructure.
+
+
+🚀 CI/CD (Jenkins Example)
+Automating the build, test, and deployment pipeline.
+
+Command	                                                            Description
+sudo apt install openjdk-11-jdk	                       Jenkins requires a Java Runtime Environment.
+(Jenkins Repo Setup)	                                 Follow official Jenkins docs to add the repository key and source list.
+sudo apt update && sudo apt install jenkins	           Installs Jenkins after the repo has been added.
+sudo systemctl status jenkins	                         Checks if the Jenkins service is running.
+
+
+📊 Observability (Prometheus & Grafana)
+Collecting metrics and visualizing data.
+
+Command	                                                             Description
+sudo apt install prometheus	                         Installs Prometheus, the time-series database for collecting metrics.
+sudo apt install grafana	                           Installs Grafana, the platform for visualizing and analyzing metrics.
+
+
+🛠️ Miscellaneous
+General system operations.
+
+Command	                                                             Description
+sudo systemctl start <service>	                      Starts a systemd service.
+sudo systemctl stop <service>	                        Stops a systemd service.
+sudo systemctl restart <service>	                    Restarts a service.
+sudo systemctl enable <service>	                      Enables a service to start automatically at boot.
+sudo systemctl disable <service>	                    Disables a service from starting at boot.
+sudo reboot	                                          Reboots the system.
+sudo shutdown now	                                    Shuts down the system immediately.
